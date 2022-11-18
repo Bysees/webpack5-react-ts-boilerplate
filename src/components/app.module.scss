@@ -1,0 +1,128 @@
+@import url('@/assets/styles/fonts.scss');
+
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #434750;
+  overflow: hidden;
+
+  font-family: 'Rubik Distressed', cursive, 'Courier New', Courier, monospace;
+  color: #fff;
+}
+
+.title {
+  padding: 100px 0;
+  text-align: center;
+  font-size: 60px;
+}
+
+.loader-wrapper {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Inspired by Youtube channel @Online Tutorials
+.loader {
+  position: relative;
+  transform: skewY(-15deg) translateX(50px) translateY(50px);
+  animation: animateColor 2.5s linear infinite;
+
+  @keyframes animateColor {
+    0% {
+      filter: hue-rotate(0deg);
+    }
+
+    100% {
+      filter: hue-rotate(360deg);
+    }
+  }
+
+  $width-right: 250px;
+  $width-left: 175px;
+  $height: 40px;
+
+  & span {
+    position: relative;
+    display: block;
+    width: $width-right;
+    height: $height;
+    background-color: #3e3f46;
+    transition: 0.5s;
+    z-index: var(--i);
+    animation: animate 5s ease-in-out infinite;
+    animation-delay: calc(-1s * var(--i));
+
+    user-select: none;
+    line-height: $height;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  @keyframes animate {
+
+    0%,
+    100% {
+      transform: translateX(-70px);
+    }
+
+    50% {
+      transform: translateX(70px);
+    }
+  }
+
+  & span:hover {
+    background-color: #33a3ee;
+    transition: 0s;
+  }
+
+  & span::before {
+    content: attr(data-content);
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: -$width-left;
+    width: $width-left;
+    background-color: #2e3133;
+    transform-origin: right;
+    transform: skewY(45deg);
+    transition: 0.5s;
+  }
+
+  & span:hover::before {
+    background-color: #1f5378;
+    transition: 0s;
+  }
+
+  & span::after {
+    content: '';
+    position: absolute;
+    top: -$width-left;
+    height: $width-left;
+    left: 0;
+    width: 100%;
+    background-color: #35383e;
+    transform-origin: bottom;
+    transform: skewX(45deg);
+    transition: 0.5s;
+  }
+
+  & span:hover::after {
+    background-color: #2982b9;
+    transition: 0s;
+  }
+}
+
+.loader::before {
+  content: '';
+  position: absolute;
+  top: 200px;
+  width: 350px;
+  height: 250px;
+  background-color: rgba(0, 0, 0, 0.1);
+  transform: skewX(45deg);
+  transform-origin: bottom;
+  filter: blur(20px);
+}

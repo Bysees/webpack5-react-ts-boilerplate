@@ -1,0 +1,9 @@
+# Ignore artifacts:
+/.vscode
+/build
+webpack.*
+package.json
+package-lock.json
+
+
+# node_modules ignored by default

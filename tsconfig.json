@@ -1,0 +1,47 @@
+{
+  "compilerOptions": {
+    // --Type Checking--
+    "strict": true,
+    "allowUnreachableCode": true,
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+
+    // --Emit--
+    "noEmit": true,
+
+    // --JavaScript Support--
+    "allowJs": false, //! Позволяет JS и TS испортировать друг в друга (если значание true)
+
+    // --Editor Support--
+    //! Расширяет intelSense поддержку редактора плагинами
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules"
+      }
+    ],
+
+    // --Interop Constraints--
+    "allowSyntheticDefaultImports": true, //! Позволяет использовать 'import x from y' вместо 'import * as x from y'
+    "esModuleInterop": true, //! должно быть в комплекте с allowSyntheticDefaultImports
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true, //! Позвоняел импортировать CommonJS модули (напримре из библиотек) в ES6 формате
+
+    // --Language and Environment--
+    "jsx": "react-jsx", //! Позволяет не использовать import React from 'react' (на уровне ts)
+    "target": "esnext",
+    "lib": ["esnext", "dom", "dom.iterable"],
+
+    // --Completeness--
+    "skipLibCheck": true,
+
+    // --Modules--
+    "module": "esnext", //! Определяет с какой модульной системой скомлируется проект
+    "moduleResolution": "node", //! Короче всегда использовать "node", если были внесены изменения в поле module
+    "resolveJsonModule": true, //! Позволяет импортировать json. import data from './src/data.json'
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"], //? Позволяет IntelSense подсказывать импорты
+    }
+  },
+  "include": ["src"]
+}
